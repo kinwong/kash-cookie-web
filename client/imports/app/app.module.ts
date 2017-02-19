@@ -6,6 +6,7 @@ import { AppComponent }  from './app.component';
 import { Logger } from 'angular2-logger/core';
 import { MaterialModule } from '@angular/material';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
+import { NgxDatatableModule} from '@swimlane/ngx-datatable';
 
  /**
   * Represents the application root module.
@@ -23,6 +24,7 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
     HttpModule,
     AccountsModule,
     MaterialModule.forRoot(),
+    NgxDatatableModule,
     ],
     providers: [Logger],
 })
