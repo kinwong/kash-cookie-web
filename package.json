@@ -19,6 +19,7 @@
     "angular2-logger": "^0.5.1",
     "angular2-meteor-accounts-ui": "^1.0.0",
     "babel-runtime": "^6.18.0",
+    "bcrypt": "^1.0.2",
     "fontawesome": "^4.7.0",
     "meteor-node-stubs": "^0.2.5",
     "meteor-rxjs": "^0.4.7",
