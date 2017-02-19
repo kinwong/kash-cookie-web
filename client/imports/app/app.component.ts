@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
+import {} from 'meteor-rxjs';
 
 /**
  * Represents the Kash-Cookie Application.
@@ -47,6 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this._logger.debug('ngOnChanges');
   }
   public ngOnInit(): void {
+    console.info('ngOnInit');
     this._logger.debug('ngOnInit');
   }
   public ngOnDestroy(): void {
