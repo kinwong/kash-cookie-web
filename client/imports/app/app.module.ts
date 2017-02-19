@@ -1,8 +1,11 @@
 import { NgModule, OnInit, OnDestroy, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { Logger } from 'angular2-logger/core';
 import { MaterialModule } from '@angular/material';
+import { AccountsModule } from 'angular2-meteor-accounts-ui';
 
  /**
   * Represents the application root module.
@@ -16,7 +19,11 @@ import { MaterialModule } from '@angular/material';
   // providers: 
   imports: [ 
     BrowserModule, 
-    MaterialModule.forRoot()],
+    FormsModule,
+    HttpModule,
+    AccountsModule,
+    MaterialModule.forRoot(),
+    ],
     providers: [Logger],
 })
 export class AppModule implements OnInit, OnDestroy {

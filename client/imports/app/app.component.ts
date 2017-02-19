@@ -10,8 +10,32 @@ import { Logger } from 'angular2-logger/core';
 @Component({
   selector: 'kc-app',
   template: `
-  <alert type="success">hello</alert>
-  `,
+<div>
+  <md-toolbar color="primary">
+    <span><md-icon>mood</md-icon></span>
+    <span>Yay, Kash-Cookie</span>
+    <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+  </md-toolbar>
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item>Option 1</button>
+    <button md-menu-item>Option 2</button>
+  </md-menu>
+
+  <md-card>
+    <button md-button>All</button>
+    <button md-raised-button>Of</button>
+    <button md-raised-button color="primary">The</button>
+    <button md-raised-button color="accent">Buttons</button>
+  </md-card>
+
+  <span class="done">
+    <button md-fab>
+      <md-icon>check circle</md-icon>
+    </button>
+  </span>
+</div>`,
   providers: [Logger],
 })
 export class AppComponent implements OnInit, OnDestroy {
