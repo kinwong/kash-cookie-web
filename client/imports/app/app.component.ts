@@ -1,3 +1,5 @@
+import 'zone.js';
+import 'reflect-metadata';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Logger } from 'angular2-logger/core';
 import { Accounts } from 'meteor/accounts-base'; 

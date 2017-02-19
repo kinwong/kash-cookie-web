@@ -1,3 +1,5 @@
+import 'zone.js';
+import 'reflect-metadata';
 import { Component } from '@angular/core';
 import { Accounts } from 'meteor/accounts-base';
 import { AuthenticationService } from '../../services/login-service';
