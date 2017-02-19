@@ -2,9 +2,8 @@ import { NgModule, OnInit, OnDestroy, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { Logger } from 'angular2-logger/core';
-import {SidebarModule} from 'ng-sidebar';
+import { MaterialModule } from '@angular/material';
 
-import * as ngb from 'ng2-bootstrap';
  /**
   * Represents the application root module.
   * 
@@ -17,12 +16,7 @@ import * as ngb from 'ng2-bootstrap';
   // providers: 
   imports: [ 
     BrowserModule, 
-    ngb.AlertModule.forRoot(),
-    ngb.ButtonsModule.forRoot(),
-    ngb.TooltipModule.forRoot(),
-    ngb.CollapseModule.forRoot(),
-    SidebarModule],
-
+    MaterialModule.forRoot()],
     providers: [Logger],
 })
 export class AppModule implements OnInit, OnDestroy {
