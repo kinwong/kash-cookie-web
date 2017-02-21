@@ -3,7 +3,7 @@
     "rules": {
         // tslint:disable-next-line:quotemark
         "quotemark": [
-            "single"
+            "single", true
         ],
         "ordered-imports": [false],
         "variable-name": [

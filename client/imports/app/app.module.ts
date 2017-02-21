@@ -8,13 +8,15 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { AppComponent } from './app';
 import { AppHeaderComponent, ContentHeaderComponent,
 IconButtonComponent,
-IconComponent, PageNotFoundComponent } from "../components";
+IconComponent } from "../components";
+import {HomePageComponent, PageNotFoundComponent} from "../pages";
 
 const allRoutes: Routes = [
   { path: '',
     redirectTo: '/heroes',
     pathMatch: 'full',
   },
+  { path: '', component: HomePageComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -34,6 +36,7 @@ const allRoutes: Routes = [
     ContentHeaderComponent,
     IconButtonComponent,
     IconComponent,
+    HomePageComponent,
     PageNotFoundComponent,
   ],
   // providers:

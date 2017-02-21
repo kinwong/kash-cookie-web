@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'kc-content-header',
+  selector: 'content-header',
   styles: ['./content-header.scss'],
   template: `
     <header class="content-header">
