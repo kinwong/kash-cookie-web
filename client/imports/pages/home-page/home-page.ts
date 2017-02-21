@@ -1,7 +1,5 @@
-import "reflect-metadata";
-import { Component } from '@angular/core';
-
-@Component({
+// App
+@import "imports/app/app";@Component({
   template: `
     <section>
       <content-header 
