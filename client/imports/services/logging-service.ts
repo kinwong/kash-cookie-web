@@ -1,9 +1,6 @@
-import 'zone.js';
-import 'reflect-metadata';
-import { Injectable } from '@angular/core';
 import {Meteor} from 'meteor/meteor';
- 
-@Injectable()
+
+
 export class AuthenticationService {
 
     public get user(): Meteor.User {

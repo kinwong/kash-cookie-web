@@ -1,12 +1,22 @@
 import { NgModule, OnInit, OnDestroy, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AppComponent }  from './app.component';
+import { RouterModule, Routes } from '@angular/router';
 import { Logger } from 'angular2-logger/core';
-import { MaterialModule } from '@angular/material';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
-import { NgxDatatableModule} from '@swimlane/ngx-datatable';
+import { AppComponent } from './app';
+import { AppHeaderComponent, ContentHeaderComponent,
+IconButtonComponent,
+IconComponent, PageNotFoundComponent } from "../components";
+
+const allRoutes: Routes = [
+  { path: '',
+    redirectTo: '/heroes',
+    pathMatch: 'full',
+  },
+  { path: '**', component: PageNotFoundComponent }
+];
 
  /**
   * Represents the application root module.
@@ -15,18 +25,27 @@ import { NgxDatatableModule} from '@swimlane/ngx-datatable';
   * @class AppModule
   */
  @NgModule({
-  bootstrap:    [ AppComponent ],
-  declarations: [ AppComponent ],
-  // providers: 
-  imports: [ 
-    BrowserModule, 
+  bootstrap: [
+    AppComponent,
+  ],
+  declarations: [
+    AppComponent,
+    AppHeaderComponent,
+    ContentHeaderComponent,
+    IconButtonComponent,
+    IconComponent,
+    PageNotFoundComponent,
+  ],
+  // providers:
+  imports: [
+    BrowserModule,
     FormsModule,
     HttpModule,
     AccountsModule,
-    MaterialModule.forRoot(),
-    NgxDatatableModule,
-    ],
-    providers: [Logger],
+    RouterModule.forRoot(allRoutes),
+    // Components
+  ],
+  providers: [Logger],
 })
 export class AppModule implements OnInit, OnDestroy {
   constructor(private _logger: Logger) {
