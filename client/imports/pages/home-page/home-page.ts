@@ -1,5 +1,7 @@
 // App
-@import "imports/app/app";@Component({
+import { Component } from "@angular/core";
+
+@Component({
   template: `
     <section>
       <content-header 
