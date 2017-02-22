@@ -6,10 +6,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { Logger } from 'angular2-logger/core';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { AppComponent } from './app';
-import { AppHeaderComponent, ContentHeaderComponent,
-IconButtonComponent,
-IconComponent } from "../components";
-import {HomePageComponent, PageNotFoundComponent} from "../pages";
+import { AppHeaderComponent, ContentHeaderComponent, IconButtonComponent, IconComponent } from "../components";
+import { ClockComponent } from "../components";
+import {HomePageComponent, PageNotFoundComponent, ResultPageComponent } from "../pages";
 
 const allRoutes: Routes = [
   { path: '',
@@ -19,7 +18,6 @@ const allRoutes: Routes = [
   { path: '', component: HomePageComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
-
  /**
   * Represents the application root module.
   * 
@@ -31,13 +29,18 @@ const allRoutes: Routes = [
     AppComponent,
   ],
   declarations: [
+    // App
     AppComponent,
     AppHeaderComponent,
     ContentHeaderComponent,
+    // Shared
     IconButtonComponent,
     IconComponent,
+    ClockComponent,
+    // Pages
     HomePageComponent,
     PageNotFoundComponent,
+    ResultPageComponent,
   ],
   // providers:
   imports: [

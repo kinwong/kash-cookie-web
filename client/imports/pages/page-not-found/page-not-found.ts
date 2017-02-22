@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
   selector: 'page-not-found',
   styles: ['./page-not-found.scss'],
   template: `
-    <h1>Page not found!<h2>
+    <div>
+    <h1>Page Not Found</h1>
+    </div>
   `,
 })
 export class PageNotFoundComponent {
