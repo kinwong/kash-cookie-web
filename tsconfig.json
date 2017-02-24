@@ -16,19 +16,17 @@
         "skipLibCheck": true,
         "stripInternal": true,
         "noImplicitAny": false,
-        "types": [
-            "meteor-typings"
-        ]
+        "types": ["meteor-typings"]
     },
     "include": [
-        "node_modules/**/*.ts",
-        "both/**/*.ts",
-        "client/**/*.ts",
-        "server/**/*.ts",
-        "imports/**/*.ts"
+        "both/**/*",
+        "client/**/*",
+        "server/**/*",
+        "imports/**/*"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "**/*.spec.ts"
     ],
     "compileOnSave": true,
     "atom": {
