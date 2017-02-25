@@ -8,7 +8,8 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { AppComponent } from './app';
 import { AppHeaderComponent, ContentHeaderComponent, IconButtonComponent, IconComponent } from "../components";
 import { ClockComponent } from "../components";
-import {HomePageComponent, PageNotFoundComponent, ResultPageComponent } from "../pages";
+import { HomePageComponent, PageNotFoundComponent, ResultPageComponent } from "../pages";
+import { AlertService, AuthenticationService } from '../services';
 
 const allRoutes: Routes = [
   { path: '',
@@ -51,7 +52,11 @@ const allRoutes: Routes = [
     RouterModule.forRoot(allRoutes),
     // Components
   ],
-  providers: [Logger],
+  providers: [
+    Logger,
+    AlertService,
+    AuthenticationService
+  ],
 })
 export class AppModule implements OnInit, OnDestroy {
   constructor(private _logger: Logger) {

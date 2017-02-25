@@ -2,14 +2,9 @@
 import { Component } from "@angular/core";
 
 @Component({
+  moduleId: module.id,
   selector: 'home-page',
-  template: `
-    <section>
-      <content-header 
-        [section]="section" 
-        [title]="title"></content-header>
-    </section>
-  `
+  templateUrl: 'home-page.html'
 })
 export class HomePageComponent {
 

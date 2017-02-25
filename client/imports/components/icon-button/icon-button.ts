@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angu
 
 
 @Component({
+  moduleId: module.id,
   encapsulation: ViewEncapsulation.None,
   selector: 'icon-button',
   styles: ['./icon-button.scss'],

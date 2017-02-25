@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 
 @Component({
+  moduleId: module.id,
   selector: 'page-not-found',
   styles: ['./page-not-found.scss'],
   template: `

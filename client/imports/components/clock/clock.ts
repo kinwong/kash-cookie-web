@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
+    moduleId: module.id,
     selector: 'clock',
     template: `
     <div>{{dateTime}}</div>

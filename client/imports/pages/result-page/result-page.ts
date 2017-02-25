@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'result-page',
     styleUrls: ['./result-page.html'],
     template: `

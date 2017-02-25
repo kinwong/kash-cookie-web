@@ -2,6 +2,7 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
+  moduleId: module.id,
   selector: 'icon',
   styles: ['./icon.scss',
   ],

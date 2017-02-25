@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
+  moduleId: module.id,
   encapsulation: ViewEncapsulation.None,
   selector: 'app-header',
   styles: ['app-header',

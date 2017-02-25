@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'content-header',
   styles: ['./content-header.scss'],
   template: `

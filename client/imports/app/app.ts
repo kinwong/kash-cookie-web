@@ -9,6 +9,7 @@ import { Accounts } from 'meteor/accounts-base';
  * @class AppComponent
  */
 @Component({
+  moduleId: module.id,
   selector: 'kc-app',
   providers: [Logger],
   template: `
