@@ -9,11 +9,17 @@ import { MeteorObservable } from 'meteor-rxjs';
 export class AuthenticationService {
     constructor(private logger: Logger) {
     }
-    public get isLoggedIn(): boolean {
+    public get isLoggingIn(): boolean {
         return Meteor.loggingIn();
+    }
+    public get isLoggedIn(): boolean {
+        return Meteor.userId == null;
     }
     public get user(): Meteor.User {
         return Meteor.user();
+    }
+    public get userId(): string {
+        return Meteor.userId();
     }
     public login(username: string, password: string): Rx.Observable<boolean> {
         const source = Rx.Observable.create(observer => {

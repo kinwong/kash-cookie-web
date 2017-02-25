@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Logger } from 'angular2-logger/core';
 import { Accounts } from 'meteor/accounts-base';
 
@@ -26,7 +27,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private _opened = false;
 
-  constructor(private _logger: Logger) {
+  constructor(private router: Router, private _logger: Logger) {
     this.environment = 'Test';
   }
   public ngOnChanges() {

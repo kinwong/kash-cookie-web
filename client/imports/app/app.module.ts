@@ -7,18 +7,11 @@ import { Logger } from 'angular2-logger/core';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { AppComponent } from './app';
 import { AppHeaderComponent, ContentHeaderComponent, IconButtonComponent, IconComponent } from "../components";
-import { ClockComponent } from "../components";
+import { ClockComponent, UserListComponent } from "../components";
 import { HomePageComponent, PageNotFoundComponent, ResultPageComponent } from "../pages";
-import { AlertService, AuthenticationService } from '../services';
+import { AlertService, AuthenticationService, PermissionGuard } from '../services';
+import { ALL_ROUTES } from './routes';
 
-const allRoutes: Routes = [
-  { path: '',
-    redirectTo: '/heroes',
-    pathMatch: 'full',
-  },
-  { path: '', component: HomePageComponent },
-  { path: '**', component: PageNotFoundComponent }
-];
  /**
   * Represents the application root module.
   * 
@@ -42,6 +35,7 @@ const allRoutes: Routes = [
     HomePageComponent,
     PageNotFoundComponent,
     ResultPageComponent,
+    UserListComponent,
   ],
   // providers:
   imports: [
@@ -49,22 +43,22 @@ const allRoutes: Routes = [
     FormsModule,
     HttpModule,
     AccountsModule,
-    RouterModule.forRoot(allRoutes),
+    RouterModule.forRoot(ALL_ROUTES),
     // Components
   ],
   providers: [
     Logger,
     AlertService,
-    AuthenticationService
+    AuthenticationService, PermissionGuard
   ],
 })
 export class AppModule implements OnInit, OnDestroy {
-  constructor(private _logger: Logger) {
+  constructor(private logger: Logger) {
   }
   public ngOnInit(): void {
-    this._logger.debug('ngOnInit');
+    this.logger.debug('ngOnInit');
   }
   public ngOnDestroy(): void {
-    this._logger.debug('ngOnDestroy');
+    this.logger.debug('ngOnDestroy');
   }
 }

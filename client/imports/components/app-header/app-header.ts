@@ -1,28 +1,24 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services';
 
 @Component({
   moduleId: module.id,
   encapsulation: ViewEncapsulation.None,
   selector: 'app-header',
-  styles: ['app-header',
+  styles: ['./app-header.scss',
   ],
   template: `
     <header class="header">
       <div class="g-row g-cont">
         <div class="g-col">
-          <h1 class="header__title">Kash-Cookie • Deep Learning Trading</h1>
+          <h1 class="header__title"><a routerLink='home'>Kash-Cookie • Deep Learning Trading</a></h1>
           <ul class="header__actions">
             <li>
               // <icon-button icon="search-alt" (onClick)="toggleOpen()"></icon-button>
             </li>
             <li>
               <icon-button icon="soundcloud"></icon-button>
-            </li>
-            <li>
-              <a class="link link--github" href="https://github.com/r-park/soundcloud-ngrx">
-                <icon name="github"></icon>
-              </a>
             </li>
           </ul>
         </div>
