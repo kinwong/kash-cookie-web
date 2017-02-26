@@ -60,6 +60,7 @@ import { ALL_ROUTES } from './routes';
 
     // Angular 2 Material modules.
     MdCoreModule, MdToolbarModule, MdButtonModule, MdButtonToggleModule, MdCardModule,
+    MdIconModule,
     // Application defined modules.
     AccountsModule,
     // Components
@@ -67,8 +68,10 @@ import { ALL_ROUTES } from './routes';
   providers: [
     Logger,
     AlertService,
-    AuthenticationService, PermissionGuard
+    AuthenticationService, PermissionGuard,
+    MdIconRegistry
   ],
+
 })
 export class AppModule implements OnInit, OnDestroy {
   constructor(private logger: Logger) {
