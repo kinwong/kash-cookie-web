@@ -14,12 +14,14 @@ import { Accounts } from 'meteor/accounts-base';
   selector: 'kc-app',
   providers: [Logger],
   template: `
-    <app-header></app-header>
-    <main>
-        <router-outlet></router-outlet>
-    </main>
-    <clock></clock>
-    <footer></footer>
+    <div class="app-content">
+      <app-header></app-header>
+      <main>
+          <router-outlet></router-outlet>
+      </main>
+      <clock></clock>
+      <footer></footer>
+    <div>
   `
 })
 export class AppComponent implements OnInit, OnDestroy {

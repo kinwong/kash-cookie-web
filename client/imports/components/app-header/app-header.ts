@@ -10,25 +10,14 @@ import { AuthenticationService } from '../../services';
   ],
   template: `
     <header class="header">
-      <div class="g-row g-cont">
-        <div class="g-col">
-          <h1 class="header__title"><a routerLink='home'>Kash-Cookie • Deep Learning Trading</a></h1>
-          <ul class="header__actions">
-            <li>
-              // <icon-button icon="search-alt" (onClick)="toggleOpen()"></icon-button>
-            </li>
-            <li>
-              <icon-button icon="soundcloud"></icon-button>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <md-toolbar>
+        <h3 class="header__title">Kash-Cookie • Deep Learning Trading</h3>
+      </md-toolbar>
     </header>
   `,
 })
 export class AppHeaderComponent {
   private open = false;
-
   constructor(public router: Router) {
     this.router.events.subscribe(() => {
       if (this.open) {
