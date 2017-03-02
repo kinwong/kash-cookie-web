@@ -13,16 +13,17 @@ import { Accounts } from 'meteor/accounts-base';
   moduleId: module.id,
   selector: 'kc-app',
   providers: [Logger],
+  styleUrls: ['./app.scss'],
+  // templateUrl: './app.html'
   template: `
-    <div class="app-content">
-      <app-header></app-header>
-      <main>
-          <router-outlet></router-outlet>
-      </main>
-      <clock></clock>
-      <footer></footer>
-    <div>
-  `
+<div class="app-content">
+    <app-header></app-header>
+    <main class="main">
+        <router-outlet></router-outlet>
+    </main>
+    <clock></clock>
+    <footer></footer>
+</div>  `
 })
 export class AppComponent implements OnInit, OnDestroy {
   public environment;

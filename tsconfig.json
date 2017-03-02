@@ -9,6 +9,7 @@
             "dom",
             "es2015"
         ],
+        "isolatedModules": false,
         "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": true,
@@ -16,10 +17,14 @@
         "skipLibCheck": true,
         "stripInternal": true,
         "noImplicitAny": false,
-        "types": ["meteor-typings", "node"]
+        "types": [
+            "meteor-typings",
+            "node",
+            "hammerjs"
+        ],
+        "removeComments": false
     },
     "include": [
-        "both/**/*",
         "client/**/*",
         "server/**/*",
         "imports/**/*"

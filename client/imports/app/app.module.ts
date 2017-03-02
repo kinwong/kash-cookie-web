@@ -15,6 +15,7 @@ import { MdTabsModule } from '@angular2-material/tabs';
 import { MdTooltipModule} from '@angular2-material/tooltip';
 import {MdCardModule} from '@angular2-material/card';
 import {MdIconModule, MdIconRegistry} from '@angular2-material/icon';
+import 'hammerjs';
 
 // OpenSource
 import { Logger } from 'angular2-logger/core';
