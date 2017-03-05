@@ -1,0 +1,33 @@
+@import '../../../styles/base';
+//=========================================================
+//  AppHeaderComponent
+//---------------------------------------------------------
+a {
+    text-decoration: none;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    transform: translateZ(0);
+    box-shadow: 0 3px 0 0 rgba(0, 0, 0, .08);
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    width: 100%;
+    min-height: 61px;
+    overflow: hidden;
+    background: $base-background-color;
+}
+
+//=====================================
+//  Title
+//-------------------------------------
+.header__title {
+    float: left;
+    padding-top: 10px;
+    height: 60px;
+    font-size: rem(14px);
+    font-weight: 400;
+    line-height: (40px / 14px);
+}

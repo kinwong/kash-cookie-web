@@ -19,15 +19,15 @@
         "noImplicitAny": false,
         "types": [
             "meteor-typings",
-            "node",
-            "hammerjs"
+            "node"
         ],
         "removeComments": false
     },
     "include": [
         "client/**/*",
         "server/**/*",
-        "imports/**/*"
+        "imports/**/*",
+        "declaration.d.ts"
     ],
     "exclude": [
         "node_modules",

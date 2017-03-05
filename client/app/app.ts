@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { Logger } from 'angular2-logger/core';
 import { Accounts } from 'meteor/accounts-base';
 
+import template from './app.html';
+import style from './app.scss';
+
 /**
  * Represents the Kash-Cookie Application.
  *
@@ -13,24 +16,17 @@ import { Accounts } from 'meteor/accounts-base';
   moduleId: module.id,
   selector: 'kc-app',
   providers: [Logger],
-  styleUrls: ['./app.scss'],
-  // templateUrl: './app.html'
-  template: `
-<div class="app-content">
-    <app-header></app-header>
-    <main class="main">
-        <router-outlet></router-outlet>
-    </main>
-    <clock></clock>
-    <footer></footer>
-</div>  `
+  //styles: [style],
+  template
 })
 export class AppComponent implements OnInit, OnDestroy {
   public environment;
 
+  public moduleId: string;
   private _opened = false;
 
   constructor(private router: Router, private _logger: Logger) {
+    this.moduleId = module.id;
     this.environment = 'Test';
   }
   public ngOnChanges() {
