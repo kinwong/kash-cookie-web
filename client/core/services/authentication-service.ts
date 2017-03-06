@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
+import { MeteorObservable, MongoObservable } from 'meteor-rxjs';
 
 import Rx from 'rxjs/Rx';
-import { Meteor } from 'meteor/meteor';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Logger } from 'angular2-logger/core';
-import { MeteorObservable } from 'meteor-rxjs';
+
+import { UserDetails } from '../../../both/api';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private _router: Router, private logger: Logger) {
+    constructor(private _router: Router, private _logger: Logger) {
     }
     public get isLoggingIn(): boolean {
         return Meteor.loggingIn();
@@ -26,7 +29,7 @@ export class AuthenticationService {
         const source = Rx.Observable.create(observer => {
             Meteor.loginWithPassword(username, password, error => {
                 if (error != null) {
-                    this.logger.error(error);
+                    this._logger.error(error);
                     observer.error(error);
                 } else {
                     observer.onNext(true);
@@ -35,12 +38,17 @@ export class AuthenticationService {
                 }
             });
             // Any cleanup logic might go here
-            return () => this.logger.log('disposed');
+            return () => this._logger.log('disposed');
         });
 
         return source;
     };
     public logout() {
         Meteor.logout();
+    }
+
+    public register(userDetails: UserDetails): Rx.Observable<boolean> {
+        return null;
+
     }
 }

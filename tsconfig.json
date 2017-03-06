@@ -24,6 +24,7 @@
         "removeComments": false
     },
     "include": [
+        "both/**/*",
         "client/**/*",
         "server/**/*",
         "imports/**/*",

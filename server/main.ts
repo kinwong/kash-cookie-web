@@ -1,6 +1,7 @@
 import * as log from 'winston';
 import * as _ from 'lodash';
 import * as Rx from 'rxjs';
+import { MeteorHTTP } from './core/meteor-http';
 
 Meteor.startup(() => {
   log.debug('Attach debugger for server side debugger');
@@ -28,4 +29,10 @@ function startup() {
     data => log.info('[' +  data.typeValue + ', ' + data.micValue + ']'),
     error => log.error(error),
     () => log.info('done!'));
+
+
+  MeteorHTTP.get('http://api.twitter.com/xyz').subscribe(
+      x => {
+        log.info("" + x);
+      });
 }
