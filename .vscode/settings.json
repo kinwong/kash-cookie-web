@@ -2,7 +2,6 @@
 {
     // Configure glob patterns for excluding files and folders.
     "files.exclude": {
-        ".meteor/local": true,
         "node_modules": true,
         "**/.git": true,
         "**/.svn": true,

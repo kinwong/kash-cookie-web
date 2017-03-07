@@ -1,6 +1,7 @@
 import * as log from 'winston';
 import * as _ from 'lodash';
 import * as Rx from 'rxjs';
+import { Setup } from './setup';
 import { MeteorHTTP } from './core/meteor-http';
 
 Meteor.startup(() => {
@@ -15,6 +16,7 @@ Meteor.startup(() => {
   // Meteor.
   log.info("Kash-Cookie starting up...");
   startup();
+  Setup.populateExchanges();
   log.info("Kash-Cookie is fully started.");
 });
 
@@ -30,9 +32,8 @@ function startup() {
     error => log.error(error),
     () => log.info('done!'));
 
-
-  MeteorHTTP.get('http://api.twitter.com/xyz').subscribe(
-      x => {
-        log.info("" + x);
-      });
+  // MeteorHTTP.get('http://api.twitter.com/xyz').subscribe(
+  //     x => {
+  //       log.info("" + x);
+  //     });
 }

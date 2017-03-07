@@ -13,17 +13,9 @@
         },
         {
             "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceRoot}/run",
-            "cwd": "${workspaceRoot}",
-            "outFiles": []
-        },
-        {
-            "type": "node",
             "request": "attach",
-            "name": "Attach to Process",
-            "port": 5858,
+            "name": "Attach to Meteor",
+            "port": 5959,
             "outFiles": []
         }
 
