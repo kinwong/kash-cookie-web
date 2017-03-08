@@ -12,8 +12,8 @@ import style from './login-page.scss';
   template,
 })
 export class LoginPageComponent implements OnInit {
-  private model: any = {};
-  private loading = false;
+  public model: any = {};
+  public loading = false;
   private returnUrl: string;
 
   constructor(
@@ -30,6 +30,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   public login() {
+    this._logger.info('login');
     this.loading = true;
     this._authenticationService.login(this.model.username, this.model.password)
       .subscribe(

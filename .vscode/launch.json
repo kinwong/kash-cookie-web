@@ -4,20 +4,27 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [{
-
-            "name": "Launch Chrome Debug",
+            "name": "Launch Meteor Client in Chrome",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:3000",
-            "webRoot": "${workspaceRoot}"
+            "sourceMaps": true,
+            "webRoot": "${workspaceRoot}",
+            "sourceMapPathOverrides": {
+                "meteor://💻app/*": "${webRoot}/*"
+            }
         },
         {
+            "name": "Attach to Meteor Server",
             "type": "node",
             "request": "attach",
-            "name": "Attach to Meteor",
             "port": 5959,
-            "outFiles": []
+            "address": "localhost",
+            "restart": false,
+            "sourceMaps": true,
+            "outFiles": ["${workspaceRoot}/.meteor/local/build/programs/server"],
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": null
         }
-
     ]
 }

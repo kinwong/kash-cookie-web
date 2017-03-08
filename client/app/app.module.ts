@@ -1,5 +1,6 @@
 // Angular2 core modules.
 import { NgModule, OnInit, OnDestroy, ErrorHandler } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -49,7 +50,7 @@ import { ALL_ROUTES } from './routes';
   // providers:
   imports: [
     // Angular 2 modules.
-    BrowserModule, FormsModule, HttpModule,
+    CommonModule, BrowserModule, FormsModule, HttpModule,
     RouterModule.forRoot(ALL_ROUTES),
     // Bootstrap module.
     Ng2BootstrapModule,
