@@ -1,3 +1,3 @@
 import { Activity } from './activity';
-import { UserDetails } from './user-details';
-export { Activity, UserDetails };
+import { IUserDetails } from './user-details';
+export { Activity, IUserDetails };

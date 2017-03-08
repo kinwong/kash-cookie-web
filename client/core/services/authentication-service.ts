@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
 import { Logger } from 'angular2-logger/core';
 import * as _ from 'lodash';
 
-import { IUserDetails } from '../../../both/api';
-
 @Injectable()
 export class AuthenticationService {
     constructor(private _logger: Logger, private _router: Router, private _zone: NgZone) {
