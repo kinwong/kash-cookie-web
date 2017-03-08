@@ -2,16 +2,17 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { MeteorObservable, MongoObservable } from 'meteor-rxjs';
 
-import Rx from 'rxjs/Rx';
-import { Injectable } from '@angular/core';
+import {Observable, Observer } from 'rxjs';
+import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Logger } from 'angular2-logger/core';
+import * as _ from 'lodash';
 
-import { UserDetails } from '../../../both/api';
+import { IUserDetails } from '../../../both/api';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private _router: Router, private _logger: Logger) {
+    constructor(private _logger: Logger, private _router: Router, private _zone: NgZone) {
     }
     public get isLoggingIn(): boolean {
         return Meteor.loggingIn();
@@ -25,10 +26,11 @@ export class AuthenticationService {
     public get userId(): string {
         return Meteor.userId();
     }
-    public login(username: string, password: string): Rx.Observable<boolean> {
-        const source = Rx.Observable.create(observer => {
-            Meteor.loginWithPassword(username, password, error => {
-                if (error != null) {
+    public login(username: string, password: string): Observable<boolean> {
+        return Observable.create(observer => {
+            Meteor.loginWithPassword(username, password,
+            error => this._zone.run(() => {
+                if (error) {
                     this._logger.error(error);
                     observer.error(error);
                 } else {
@@ -36,19 +38,30 @@ export class AuthenticationService {
                     observer.onCompleted();
                     this._router.navigate(['Home']);
                 }
-            });
-            // Any cleanup logic might go here
-            return () => this._logger.log('disposed');
+            }));
+            return _.noop;
         });
-
-        return source;
-    };
+    }
     public logout() {
         Meteor.logout();
     }
-
-    public register(userDetails: UserDetails): Rx.Observable<boolean> {
-        return null;
-
+    
+    public register(
+        username: string, password: string, email: string, profile?: any): Observable<boolean> {
+        return Observable.create(observer => {
+            Accounts.createUser({
+            username, email, password, profile},
+            error => this._zone.run(() => {
+                if (error) {
+                    this._logger.error(error);
+                    observer.error(error);
+                } else {
+                    observer.onNext(true);
+                    observer.onCompleted();
+                    this._router.navigate(['Home']);
+                }
+            }));
+            return _.noop;
+        });
     }
 }

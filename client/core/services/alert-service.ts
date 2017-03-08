@@ -1,37 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Logger } from 'angular2-logger/core';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AlertService {
-    private readonly subject = new Subject<any>();
-    private keepAfterNavigationChange = false;
+    private readonly _subject = new Subject<any>();
+    private _keepAfterNavigationChange = false;
 
-    constructor(private router: Router) {
+    constructor(private _logger: Logger, private _router: Router) {
         // clear alert message on route change
-        router.events.subscribe((event) => {
+        _router.events.subscribe(event => {
             if (event instanceof NavigationStart) {
-                if (this.keepAfterNavigationChange) {
+                if (this._keepAfterNavigationChange) {
                     // only keep for a single location change
-                    this.keepAfterNavigationChange = false;
+                    this._keepAfterNavigationChange = false;
                 } else {
                     // clear alert
-                    this.subject.next();
+                    this._subject.next();
                 }
             }
         });
     }
-
+    
     public success(message: string, keepAfterNavigationChange = false) {
-        this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'success', text: message });
+        this._keepAfterNavigationChange = keepAfterNavigationChange;
+        this._subject.next({ type: 'success', text: message });
     }
     public error(message: string, keepAfterNavigationChange = false) {
-        this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'error', text: message });
+        this._keepAfterNavigationChange = keepAfterNavigationChange;
+        this._subject.next({ type: 'error', text: message });
     }
     public getMessage(): Observable<any> {
-        return this.subject.asObservable();
+        return this._subject.asObservable();
     }
 }

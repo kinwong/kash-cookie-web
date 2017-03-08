@@ -8,6 +8,7 @@ import style from './login-page.scss';
 
 @Component({
   moduleId: module.id,
+  selector: 'login-page',
   // styles: [style],
   template,
 })
@@ -23,7 +24,7 @@ export class LoginPageComponent implements OnInit {
     private _authenticationService: AuthenticationService,
     private _alertService: AlertService) { }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     // reset login status
     this._authenticationService.logout();
     // get return url from route parameters or default to '/'
@@ -34,11 +35,14 @@ export class LoginPageComponent implements OnInit {
     this.loading = true;
     this._authenticationService.login(this.model.username, this.model.password)
       .subscribe(
-      data => {
+      _ => {
         this._router.navigate([this.returnUrl]);
       },
       error => {
         this._alertService.error(error);
+        this.loading = false;
+      },
+      () => {
         this.loading = false;
       });
   }

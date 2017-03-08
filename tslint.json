@@ -17,6 +17,8 @@
             false
         ],
         // tslint:disable-next-line:arrow-parens
-        "arrow-parens": false
+        "arrow-parens": false,
+        // tslint:disable-next-line:no-trailing-whitespace
+        "no-trailing-whitespace": false
     }
 }
