@@ -2,8 +2,10 @@ import * as log from 'winston';
 import * as _ from 'lodash';
 import * as Rx from 'rxjs';
 import { Setup } from './setup';
-import { MeteorHTTP } from './core/meteor-http';
+import { MeteorHTTP } from './api';
+import * as Services from './services';
 
+const exchanges = new Services.ExchangeDataStore();
 
 Meteor.startup(() => {
   log.debug('Attach debugger for server side debugger');
@@ -32,5 +34,6 @@ function startup() {
   //   data => log.info('[' +  data.typeValue + ', ' + data.micValue + ']'),
   //   error => log.error(error),
   //   () => log.info('done!'));
+  exchanges.start();
   Setup.populateExchanges();
 }

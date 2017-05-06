@@ -12,7 +12,7 @@ import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 
 // Core components
-import { AlertService, AuthenticationService, PermissionGuard } from '../core/services';
+import * as Services from '../core/services';
 import { AppComponent } from './app';
 import { AppHeaderComponent, ContentHeaderComponent } from "../core/components";
 import {
@@ -63,8 +63,10 @@ import { ALL_ROUTES } from './routes';
   ],
   providers: [
     Logger,
-    AlertService,
-    AuthenticationService, PermissionGuard
+    Services.AlertService,
+    Services.AuthenticationService, 
+    Services.PermissionGuard, 
+    Services.PermissionGuardFake
   ],
 })
 export class AppModule implements OnInit, OnDestroy {
