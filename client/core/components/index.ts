@@ -1,10 +1,9 @@
-import { AppHeaderComponent } from './app-header/app-header';
-import { ContentHeaderComponent } from './content-header/content-header';
-import { LoginPageComponent } from './login-page/login-page';
+export * from './app-header/app-header';
+export * from './content-header/content-header';
+export * from './login-page/login-page';
 
-import { HomePageComponent } from './home-page/home-page';
-import { PageNotFoundComponent } from './page-not-found/page-not-found';
-import { RegisterPageComponent } from './register-page/register-page';
+export * from './home-page/home-page';
+export * from './page-not-found/page-not-found';
+export * from './register-page/register-page';
+export * from './exchange-list/exchange-list';
 
-export { AppHeaderComponent, ContentHeaderComponent };
-export { HomePageComponent, PageNotFoundComponent, LoginPageComponent, RegisterPageComponent };

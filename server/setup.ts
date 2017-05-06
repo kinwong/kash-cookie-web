@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { exchanges } from 'both/api/collections';
 import * as log from 'winston';
-import * as parse from 'csv-parse/lib/sync';
 import * as fs from 'fs';
 
 export class Setup {

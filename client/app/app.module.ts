@@ -9,7 +9,6 @@ import { RouterModule, Routes } from '@angular/router';
 // OpenSource
 import { Logger } from 'angular2-logger/core';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
-import { Ng2BootstrapModule } from 'ng2-bootstrap';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 
 // Core components
@@ -17,7 +16,8 @@ import { AlertService, AuthenticationService, PermissionGuard } from '../core/se
 import { AppComponent } from './app';
 import { AppHeaderComponent, ContentHeaderComponent } from "../core/components";
 import {
-  HomePageComponent, PageNotFoundComponent, LoginPageComponent, RegisterPageComponent 
+  HomePageComponent, PageNotFoundComponent, LoginPageComponent, RegisterPageComponent,
+  ExchangeListComponent 
 } from "../core/components";
 
 import { ClockComponent } from './clock/clock';
@@ -46,6 +46,8 @@ import { ALL_ROUTES } from './routes';
     PageNotFoundComponent,
     LoginPageComponent,
     RegisterPageComponent,
+    // shared components
+    ExchangeListComponent,
   ],
   // providers:
   imports: [
@@ -53,7 +55,6 @@ import { ALL_ROUTES } from './routes';
     CommonModule, BrowserModule, FormsModule, HttpModule,
     RouterModule.forRoot(ALL_ROUTES),
     // Bootstrap module.
-    Ng2BootstrapModule,
     // Fontawesome module.
     Angular2FontawesomeModule,
     // Application defined modules.

@@ -4,6 +4,7 @@ import * as Rx from 'rxjs';
 import { Setup } from './setup';
 import { MeteorHTTP } from './core/meteor-http';
 
+
 Meteor.startup(() => {
   log.debug('Attach debugger for server side debugger');
   // tslint:disable-next-line:no-debugger
@@ -21,19 +22,15 @@ Meteor.startup(() => {
 });
 
 function startup() {
-  const mics = ['AA', 'BB', 'CC'];
-  const types = ['11', '22', '33'];
-  const all = Rx.Observable.from(mics)
-    .flatMap(mic => Rx.Observable
-    .from(types.map(type => ({ typeValue: type, micValue: mic }))));
+  // const mics = ['AA', 'BB', 'CC'];
+  // const types = ['11', '22', '33'];
+  // const all = Rx.Observable.from(mics)
+  //   .flatMap(mic => Rx.Observable
+  //   .from(types.map(type => ({ typeValue: type, micValue: mic }))));
 
-  const subcscription = all.subscribe(
-    data => log.info('[' +  data.typeValue + ', ' + data.micValue + ']'),
-    error => log.error(error),
-    () => log.info('done!'));
-
-  // MeteorHTTP.get('http://api.twitter.com/xyz').subscribe(
-  //     x => {
-  //       log.info("" + x);
-  //     });
+  // const subcscription = all.subscribe(
+  //   data => log.info('[' +  data.typeValue + ', ' + data.micValue + ']'),
+  //   error => log.error(error),
+  //   () => log.info('done!'));
+  Setup.populateExchanges();
 }
