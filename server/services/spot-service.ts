@@ -57,7 +57,7 @@ export class SpotService {
           }
         }
       });
-      self.ready();
+      //self.ready();
     });
     log.info('Spot-Service started.');
   }
@@ -82,6 +82,7 @@ export class SpotService {
         log.info('ric:%s - %d', ric, spot.value);
         for (const subscription of subscriptions.get(ric)) {
           subscription.added(api.dataMarketSpot, Random.id(), spot);
+          subscription.ready();
         }
       }
     }
