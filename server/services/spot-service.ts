@@ -6,6 +6,8 @@ import { MeteorObservable } from 'meteor-rxjs';
 import { } from '../core/meteor';
 import * as loash from 'lodash';
 
+
+const spotChangeInterval = 250;
 /**
  * 
  * @export
@@ -22,12 +24,15 @@ export class SpotService {
 
   public start(): void {
     log.info('Spot-Service starting...');
-    this._timerId = Meteor.setInterval(() => SpotService.generateSpots(this._subscriptions), 10);
+    this._timerId = Meteor.setInterval(
+      () => SpotService.generateSpots(this._subscriptions), 
+      spotChangeInterval);
     const service = this;
 
     // tslint:disable-next-line:only-arrow-functions
     Meteor.publish(api.dataMarketSpot, function(rics: string[]) {
       const self: Subscription = this;
+      log.info('ric[%s] subscribed.', rics.join(','));
       for (const ric of rics) {
         let subscriptions = service._subscriptions.get(ric);
         if (subscriptions === undefined) {
@@ -38,12 +43,16 @@ export class SpotService {
         }
       }
       self.onStop(() => {
+        log.info('ric[%s] unsubscribed.', rics.join(','));
         for (const ric of rics) {
           const subscriptions = service._subscriptions.get(ric);
           if (subscriptions !== undefined) {
             const index = subscriptions.indexOf(self);
             if (index > -1) {
               subscriptions.splice(index);
+            }
+            if (subscriptions.length === 0) {
+              service._subscriptions.delete(ric);
             }
           }
         }
@@ -70,6 +79,7 @@ export class SpotService {
           timestamp: new Date(),
           value: Random.fraction() * 1000.0
         };
+        log.info('ric:%s - %d', ric, spot.value);
         for (const subscription of subscriptions.get(ric)) {
           subscription.added(api.dataMarketSpot, Random.id(), spot);
         }

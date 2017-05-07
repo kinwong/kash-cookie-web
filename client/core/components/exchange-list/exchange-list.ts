@@ -26,7 +26,17 @@ export class ExchangeListComponent implements OnInit, OnDestroy {
   public ngOnInit() {
     this.logger.info('ngOnInit');
     this._subscription = MeteorObservable.subscribe(
-      api.dataMarketSpot, ['0005.HK']).subscribe(spot => this.spot = spot as api.ISpot);
+      api.dataMarketSpot, ['0005.HK'])
+      .subscribe(spot => {
+        console.info(spot);
+        this.spot = spot as api.ISpot;
+      },
+      error => {
+        console.error(error);
+      },
+      () => {
+        console.info('Done!');
+      });
   }
 
   public ngOnDestroy() {
