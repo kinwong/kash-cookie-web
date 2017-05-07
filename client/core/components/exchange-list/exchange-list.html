@@ -1,5 +1,7 @@
 <div>
-    <button (click)="onFetch()">Fetch!!</button>
+    Spot: {{spot | json}}
+    <br>
+    <button (click)="onFetch()">Fetch Exchange</button>
     <ul>
         <li *ngFor="let exchange of exchanges">{{exchange | json}}</div>
 </ul>

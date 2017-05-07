@@ -23,3 +23,9 @@ export interface ICurrency {
   withdrawalDate: string;
   remark: string;
 }
+
+export interface ISpot {
+  ric: string;
+  timestamp: Date;
+  value: number;
+}

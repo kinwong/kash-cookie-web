@@ -7,17 +7,17 @@ import { ICurrency } from '../../imports/api';
 /**
  * 
  * @export
- * @class CurrencyStore
+ * @class CurrencyService
  */
-export class CurrencyStore {
+export class CurrencyService {
   private readonly _currencies: Map<string, ICurrency> = 
   new Map<string, ICurrency>();
 
   public start(): void {
     log.info('Currency-Store starting...');
     const csv = Assets.getText('currencies.csv');
-    const currencies = parse(csv, {columns: true, relax_column_count: true});
     debugger;
+    const currencies = parse(csv, {columns: true, relax_column_count: true});
     for (const item of currencies) {
       const currency: ICurrency = item;
       if (this._currencies.has(currency.code)) {
@@ -26,13 +26,16 @@ export class CurrencyStore {
       this._currencies.set(currency.code, currency);
     }
     Meteor.methods({
-      retrieveCurrencies: (): ICurrency[] => {
+      dataCurrenciesRetrieveAll: (): ICurrency[] => {
         return Array.from<ICurrency>(this._currencies.values());
       },
-      retrieveCurrency: (code: string): ICurrency => {
+      dataCurrenciesRetrieve: (code: string): ICurrency => {
         return this._currencies.get(code);
       }
     });
     log.info('Currency-Store started - %d currencies read.', this._currencies.size);
+  }
+
+  public stop(): void {
   }
 }

@@ -5,8 +5,9 @@ import { Setup } from './setup';
 import { MeteorHTTP } from './api';
 import * as Services from './services';
 
-const exchanges = new Services.ExchangeStore();
-const currencies = new Services.CurrencyStore();
+const exchanges = new Services.ExchangeService();
+const currencies = new Services.CurrencyService();
+const spots = new Services.SpotService();
 
 Meteor.startup(() => {
   log.debug('Attach debugger for server side debugger');
@@ -35,5 +36,5 @@ function startup() {
   //   () => log.info('done!'));
   exchanges.start();
   currencies.start();
-  Setup.populateExchanges();
+  spots.start();
 }
