@@ -1,2 +1,3 @@
-export * from './exchange-data-store';
+export * from './exchange-store';
+export * from './currency-store';
 

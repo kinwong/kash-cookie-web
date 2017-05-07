@@ -5,12 +5,11 @@ import { Setup } from './setup';
 import { MeteorHTTP } from './api';
 import * as Services from './services';
 
-const exchanges = new Services.ExchangeDataStore();
+const exchanges = new Services.ExchangeStore();
+const currencies = new Services.CurrencyStore();
 
 Meteor.startup(() => {
   log.debug('Attach debugger for server side debugger');
-  // tslint:disable-next-line:no-debugger
-  debugger;
 
   // if (!Meteor.settings) {
   //   throw new Error('[--setting] must be specified.');
@@ -35,5 +34,6 @@ function startup() {
   //   error => log.error(error),
   //   () => log.info('done!'));
   exchanges.start();
+  currencies.start();
   Setup.populateExchanges();
 }

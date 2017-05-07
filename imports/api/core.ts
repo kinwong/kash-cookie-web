@@ -15,6 +15,11 @@ export interface IExchange {
 }
 
 export interface ICurrency {
-  code: string;
+  country: string;
   name: string;
+  code: string;
+  numbericCode: string;
+  minorUnit: string;
+  withdrawalDate: string;
+  remark: string;
 }

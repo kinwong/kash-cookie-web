@@ -7,28 +7,30 @@ import { IExchange } from '../../imports/api';
 /**
  * 
  * @export
- * @class ExchangeDataStore
+ * @class ExchangeStore
  */
-export class ExchangeDataStore {
-  private readonly _mapMicToExchanges: Map<string, IExchange> = 
+export class ExchangeStore {
+  private readonly _exchanges: Map<string, IExchange> = 
   new Map<string, IExchange>();
 
   public start(): void {
-    log.info('Exchange-Data-Store starting...');
+    log.info('Exchange-Store starting...');
     const exchanges = JSON.parse(stripJsonComments(Assets.getText('exchanges.json')));
     for (const item of exchanges) {
       const exchange: IExchange = item;
-      this._mapMicToExchanges.set(exchange.mic, exchange);
+      if (this._exchanges.has(exchange.mic)) {
+        log.warn('mic[%s] has already been inserted.', exchange.mic);
+      }
+      this._exchanges.set(exchange.mic, exchange);
     }
     Meteor.methods({
       retrieveExchanges: (): IExchange[] => {
-        log.info('exchanges called');
-        return Array.from<IExchange>(this._mapMicToExchanges.values());
+        return Array.from<IExchange>(this._exchanges.values());
       },
       retrieveExchange: (mic: string): IExchange => {
-        return this._mapMicToExchanges.get(mic);
+        return this._exchanges.get(mic);
       }
     });
-    log.info('Exchange-Data-Store start done.');
+    log.info('Exchange-Store started - %d exchanges read.', this._exchanges.size);
   }
 }
