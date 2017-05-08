@@ -1,12 +1,12 @@
 import * as log from 'winston';
 import * as _ from 'lodash';
 import * as Rx from 'rxjs';
-import { Setup } from './setup';
 import { MeteorHTTP } from './api';
 import * as Services from './services';
 
 const exchanges = new Services.ExchangeService();
 const currencies = new Services.CurrencyService();
+const countries = new Services.CountryService();
 const spots = new Services.SpotService();
 
 Meteor.startup(() => {
@@ -19,7 +19,6 @@ Meteor.startup(() => {
   // Meteor.
   log.info("Kash-Cookie starting up...");
   startup();
-  Setup.populateExchanges();
   log.info("Kash-Cookie is fully started.");
 });
 
@@ -34,7 +33,6 @@ function startup() {
   //   data => log.info('[' +  data.typeValue + ', ' + data.micValue + ']'),
   //   error => log.error(error),
   //   () => log.info('done!'));
-  exchanges.start();
-  currencies.start();
+  Promise.all([exchanges.start(), currencies.start(), countries.start()]);
   spots.start();
 }
