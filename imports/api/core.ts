@@ -32,3 +32,8 @@ export interface ISpot {
   timestamp: Date;
   value: number;
 }
+
+export interface IStrategy {
+  name: string;
+  description: string;
+}

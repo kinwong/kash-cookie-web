@@ -15,10 +15,7 @@ import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawe
 import * as Services from '../core/services';
 import { AppComponent } from './app';
 import { AppHeaderComponent, ContentHeaderComponent } from "../core/components";
-import {
-  HomePageComponent, PageNotFoundComponent, LoginPageComponent, RegisterPageComponent,
-  ExchangeListComponent 
-} from "../core/components";
+import * as Components from '../core/components';
 
 import { ClockComponent } from './clock/clock';
 
@@ -42,12 +39,13 @@ import { ALL_ROUTES } from './routes';
     // Shared
     ClockComponent,
     // Pages
-    HomePageComponent,
-    PageNotFoundComponent,
-    LoginPageComponent,
-    RegisterPageComponent,
+    Components.HomePageComponent,
+    Components.PageNotFoundComponent,
+    Components.LoginPageComponent,
+    Components.RegisterPageComponent,
     // shared components
-    ExchangeListComponent,
+    Components.ExchangeListComponent,
+    Components.StrategyListComponent
   ],
   // providers:
   imports: [

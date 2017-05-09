@@ -32,7 +32,7 @@ export class SpotService {
     // tslint:disable-next-line:only-arrow-functions
     Meteor.publish(api.dataMarketSpot, function(rics: string[]) {
       const self: Subscription = this;
-      log.info('ric[%s] subscribed.', rics.join(','));
+      log.info('Spot-ric[%s] subscribed.', rics.join(','));
       for (const ric of rics) {
         let subscriptions = service._subscriptions.get(ric);
         if (subscriptions === undefined) {
@@ -43,7 +43,7 @@ export class SpotService {
         }
       }
       self.onStop(() => {
-        log.info('ric[%s] unsubscribed.', rics.join(','));
+        log.info('Spot-ric[%s] unsubscribed.', rics.join(','));
         for (const ric of rics) {
           const subscriptions = service._subscriptions.get(ric);
           if (subscriptions !== undefined) {

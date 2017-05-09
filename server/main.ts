@@ -8,6 +8,7 @@ const exchanges = new Services.ExchangeService();
 const currencies = new Services.CurrencyService();
 const countries = new Services.CountryService();
 const spots = new Services.SpotService();
+const strategies = new Services.StrategyService();
 
 Meteor.startup(() => {
   log.debug('Attach debugger for server side debugger');
@@ -35,4 +36,5 @@ function startup() {
   //   () => log.info('done!'));
   Promise.all([exchanges.start(), currencies.start(), countries.start()]);
   spots.start();
+  strategies.start();
 }
