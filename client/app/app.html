@@ -1,8 +1,14 @@
-<div class="app-content">
-    <app-header></app-header>
-    <main class="main">
-        <router-outlet></router-outlet>
-    </main>
+<div class='canvas'>
+    <header>
+        <app-header></app-header>
+    </header>
+    <div class="layout__body">
+        <main class="layout__content">
+            <router-outlet></router-outlet>
+        </main>
+        <nav class="layout__nav layout__columns">Nav</nav>
+        <aside class="layout__aside layout__columns">Aside</aside>
+    </div>
     <footer>
         <clock></clock>
     </footer>

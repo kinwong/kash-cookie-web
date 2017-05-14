@@ -20,6 +20,11 @@ import * as Components from '../core/components';
 import { ClockComponent } from './clock/clock';
 
 import { ALL_ROUTES } from './routes';
+import * as DevExtreme from 'devextreme-angular';
+
+// require('../icons/dxicons.ttf');
+// require('../icons/dxicons.woff');
+
 
  /**
   * Represents the application root module.
@@ -45,7 +50,7 @@ import { ALL_ROUTES } from './routes';
     Components.RegisterPageComponent,
     // shared components
     Components.ExchangeListComponent,
-    Components.StrategyListComponent
+    Components.StrategyListComponent,
   ],
   // providers:
   imports: [
@@ -57,6 +62,10 @@ import { ALL_ROUTES } from './routes';
     Angular2FontawesomeModule,
     // Application defined modules.
     AccountsModule,
+    DevExtreme.DxBoxModule,
+    DevExtreme.DxNavBarModule,
+    DevExtreme.DxButtonModule,
+    DevExtreme.DxDataGridModule,
     // Components
   ],
   providers: [

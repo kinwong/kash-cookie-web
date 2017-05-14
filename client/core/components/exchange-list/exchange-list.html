@@ -1,8 +1,11 @@
-<div>
-    Spot: {{spot | json}}
-    <br>
-    <button (click)="onFetch()">Fetch Exchange</button>
-    <ul>
+<div class="exchange-list-container">
+    <dx-button text="Fetch Exchange" (onClick)="fetchExchanges()">
+    </dx-button>
+    <dx-data-grid class="exchange-list" [dataSource]="exchanges" [columns]="['mic', 'country', 'countryCode', 'marketType', 'description']">
+    </dx-data-grid>
+    <!--Spot: {{spot | json}}-->
+    <!--<dx-button (click)="onFetch()">Fetch Exchange</dx-button>-->
+    <!--<ul>
         <li *ngFor="let exchange of exchanges">{{exchange | json}}</div>
-</ul>
+    </ul>-->
 </div>

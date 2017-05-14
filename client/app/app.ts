@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Logger } from 'angular2-logger/core';
 import { Accounts } from 'meteor/accounts-base';
 
 import template from './app.html';
-import style from './app.scss';
+//import style from './app.scss';
 
 /**
  * Represents the Kash-Cookie Application.
@@ -16,7 +16,8 @@ import style from './app.scss';
   moduleId: module.id,
   selector: 'kc-app',
   providers: [Logger],
-  //styles: [style],
+  styleUrls: ['./app.scss'],
+  encapsulation: ViewEncapsulation.None,
   template
 })
 export class AppComponent implements OnInit, OnDestroy {

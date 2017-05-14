@@ -14,6 +14,7 @@ const spots = new MongoObservable.Collection(api.dataMarketSpot);
 @Component({
   moduleId: module.id,
   selector: 'exchange-list',
+  styleUrls: ['./exchange-list.scss'],
   template})
 
 export class ExchangeListComponent implements OnInit, OnDestroy {
@@ -37,6 +38,9 @@ export class ExchangeListComponent implements OnInit, OnDestroy {
       () => {
         console.info('Done!');
       });
+    this.exchanges = [];
+    this.fetchExchanges().subscribe(x => this.exchanges = x);
+
   }
 
   public ngOnDestroy() {
@@ -44,9 +48,6 @@ export class ExchangeListComponent implements OnInit, OnDestroy {
     this._subscription.unsubscribe();
   }
   public onFetch(): void {
-    this.logger.info('wefwefef');
-    this.exchanges = [];
-    this.fetchExchanges().subscribe(x => this.exchanges = x);
 
   }
 
