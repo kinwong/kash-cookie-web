@@ -1,7 +1,14 @@
 <div class="exchange-list-container">
+    
     <dx-button text="Fetch Exchange" (onClick)="fetchExchanges()">
     </dx-button>
-    <dx-data-grid class="exchange-list" [dataSource]="exchanges" [columns]="['mic', 'country', 'countryCode', 'marketType', 'description']">
+    <dx-data-grid class="exchange-list" [hoverStateEnabled]="true" [selectedRowKeys]="[]"
+        [dataSource]="exchanges" [columns]="['mic', 'country', 'countryCode', 'marketType', 'description']">
+        <dxo-load-panel [enabled]="true"></dxo-load-panel>
+        <dxo-sorting mode="none"></dxo-sorting>
+        <dxo-export [enabled]="true"></dxo-export>
+        <dxo-selection mode="multiple"></dxo-selection>
+
     </dx-data-grid>
     <!--Spot: {{spot | json}}-->
     <!--<dx-button (click)="onFetch()">Fetch Exchange</dx-button>-->

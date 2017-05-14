@@ -66,6 +66,7 @@ import * as DevExtreme from 'devextreme-angular';
     DevExtreme.DxNavBarModule,
     DevExtreme.DxButtonModule,
     DevExtreme.DxDataGridModule,
+    DevExtreme.DxScrollViewModule,
     // Components
   ],
   providers: [
